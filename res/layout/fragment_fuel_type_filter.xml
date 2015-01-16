@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="fill_parent">
+    
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+ <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+	android:orientation="horizontal"
+	android:layout_marginTop="20dp"
+	android:padding="10dp"
+	android:layout_marginBottom="5dp"
+    >
+	    <TextView
+        
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose Owner Type"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="@color/blue"
+		/>    
+     
+    </LinearLayout>
+    
+ 
+ 
+  <RelativeLayout android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+ 	android:layout_marginBottom="5dp"
+ 	android:paddingTop="5dp"
+ 	android:paddingBottom="5dp"
+ 	android:paddingLeft="15dp"
+ 	android:paddingRight="15dp"
+    >       
+    <TextView
+        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Petrol"
+        android:textSize="16dp" />
+
+    <CheckBox
+        android:textColor="@color/blue"
+        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/txtLabel"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="18dp"
+         />
+	</RelativeLayout>
+
+ <RelativeLayout
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+ 	android:layout_marginBottom="5dp"
+ 	android:paddingTop="5dp"
+ 	android:paddingBottom="5dp"
+ 	android:paddingLeft="15dp"
+ 	android:paddingRight="15dp" >
+
+     <CheckBox
+         android:textColor="@color/blue"
+         
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentRight="true"
+         android:layout_alignParentTop="true"
+         android:layout_marginRight="18dp"
+         />
+
+     <TextView
+         
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         
+         android:layout_alignParentLeft="true"
+         android:text="Diesel"
+         android:textSize="16dp" />
+
+ </RelativeLayout>
+ <RelativeLayout
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+ 	android:layout_marginBottom="5dp"
+ 	android:paddingTop="5dp"
+ 	android:paddingBottom="5dp"
+ 	android:paddingLeft="15dp"
+ 	android:paddingRight="15dp" >
+
+     <CheckBox
+         android:textColor="@color/blue"
+         
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentRight="true"
+         android:layout_alignParentTop="true"
+         android:layout_marginRight="18dp"
+         />
+
+     <TextView
+         
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignBottom="@+id/checkBox3"
+         android:layout_alignParentLeft="true"
+         android:text="LPG"
+         android:textSize="16dp" />
+
+ </RelativeLayout>
+  <LinearLayout
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+ 	android:layout_marginBottom="5dp"
+ 	android:padding= "5dp" 
+ 	android:layout_marginLeft="20dp"
+ 	android:orientation="horizontal"
+ >
+    
+	
+        <Button
+     android:id="@+id/reset_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="RESET TO DEFAULT" 
+      android:textSize="13dp"
+      android:textColor="@color/blue"
+      />
+        
+        <Button
+    
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="APPLY FILTER" 
+      android:textSize="13dp"
+      android:layout_marginLeft="10dp"
+      android:textColor="@color/blue"
+      />
+        
+    </LinearLayout>
+
+</LinearLayout>
+</ScrollView>
