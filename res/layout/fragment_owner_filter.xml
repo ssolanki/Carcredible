@@ -45,7 +45,7 @@
 
     <CheckBox
         android:textColor="@color/blue"
-        android:id="@+id/checkBox1"
+        android:id="@+id/owner_type1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/txtLabel"
@@ -65,7 +65,7 @@
 
      <CheckBox
          android:textColor="@color/blue"
-          
+        android:id="@+id/owner_type2"  
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentRight="true"
@@ -94,7 +94,7 @@
 
      <CheckBox
          android:textColor="@color/blue"
-         android:id="@+id/checkBox3"
+         android:id="@+id/owner_type3"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentRight="true"

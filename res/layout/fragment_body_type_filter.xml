@@ -38,7 +38,7 @@
 
      <CheckBox
          android:textColor="@color/blue"
-         
+         android:id="@+id/body_hback"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentRight="true"
@@ -68,7 +68,7 @@
 
      <CheckBox
          android:textColor="@color/blue"
-         
+                  android:id="@+id/body_sedan"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentRight="true"
@@ -97,7 +97,7 @@
 
      <CheckBox
          android:textColor="@color/blue"
-         
+         android:id="@+id/body_suv"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentRight="true"

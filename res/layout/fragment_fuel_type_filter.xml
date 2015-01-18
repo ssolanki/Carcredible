@@ -46,7 +46,7 @@
 
     <CheckBox
         android:textColor="@color/blue"
-        
+        android:id="@+id/fuel_type_petrol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/txtLabel"
@@ -66,7 +66,7 @@
 
      <CheckBox
          android:textColor="@color/blue"
-         
+                 android:id="@+id/fuel_type_diesel"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentRight="true"
@@ -95,7 +95,7 @@
 
      <CheckBox
          android:textColor="@color/blue"
-         
+        android:id="@+id/fuel_type_lpg"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignParentRight="true"

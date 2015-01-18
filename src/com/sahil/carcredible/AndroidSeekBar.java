@@ -17,7 +17,7 @@ public class AndroidSeekBar{
     private TextView SeekValue;
     private TextView PRICEtextProgress,DISTANCEtextProgress, RATINGtextProgress;
     
-    public AndroidSeekBar(SeekBar id1, TextView textid,int type){
+    public int AndroidSeekBar(SeekBar id1, TextView textid,int type){
     /** Called when the activity is first created. */
        	
         PRICEbar = id1; // make seekbar object
@@ -27,7 +27,7 @@ public class AndroidSeekBar{
         int is_reset = 0;//objMyApp.getDeafultVarValue();
         if(is_reset==1)
         {
-        	PRICEbar.setProgress(0);
+        	// PRICEbar.setProgress(0);
         }
         else{
 	        if(type==2)
@@ -36,7 +36,7 @@ public class AndroidSeekBar{
 	        	PRICEbar.setProgress(100);
         }
         int progress = PRICEbar.getProgress();
-        
+        int returnval= progress;
         PRICEbar.setTag(String.valueOf(type));
  
         PRICEbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){ 
@@ -51,6 +51,9 @@ public class AndroidSeekBar{
         		   
         		   int type=Integer.parseInt(seekBar.getTag().toString());
         	        if(type==1){
+        	     //   	 ((MainActivity)getActivity()).max_budget = progress;
+        	        //     ((MainActivity)getActivity()).min_budget = min_budget_sbar.getProgress();
+        	        		
         	        	if(progress>98){
         	        		SeekValue.setText("No Limit");
         	        	}
@@ -67,8 +70,8 @@ public class AndroidSeekBar{
         	        		SeekValue.setText("No Limit");
         	        	}
         	        	else{
-        	        		progress = progress/6;
-        	        		SeekValue.setText(String.valueOf(progress)+ " Years");
+        	        		int value = progress/6;
+        	        		SeekValue.setText(String.valueOf(value)+ " Years");
         	        	}
         	        }
         	        else if(type==3){
@@ -77,8 +80,8 @@ public class AndroidSeekBar{
         	        		SeekValue.setText("99999 km");
         	        	}
         	        	else{
-        	        		progress = ((progress/5)*5)*1000;
-        	        		SeekValue.setText(String.valueOf(progress)+ " km");
+        	        		int value = ((progress/5)*5)*1000;
+        	        		SeekValue.setText(String.valueOf(value)+ " km");
         	        	}
         	        }
 		       		
@@ -100,6 +103,7 @@ public class AndroidSeekBar{
         	SeekValue.setText(SeekValue.getText()+ " Years");        
         else if(type ==3)
         	SeekValue.setText(SeekValue.getText()+ " km");
-*/    }
+*/ return progress;
+        }
     	
 }

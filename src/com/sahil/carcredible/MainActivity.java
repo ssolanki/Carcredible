@@ -20,15 +20,23 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
+import android.widget.CompoundButton;
 public class MainActivity extends Activity {
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
-
+	public int max_budget = 100;
+	public int min_budget = 0, car_age = 100,mileage= 100;
+	public int cbox_hback_set = 0, cbox_sedan_set=0,cbox_suv_set=0;
+	public int cbox_petrol_set = 0, cbox_diesel_set=0, cbox_lpg_set = 0; //var to check checkbox in fuel type fragmetn
+	public int cbox_manual_set=0,cbox_auto_set = 0;
+	public int cbox_owner1_set=0,cbox_owner2_set=0 ,cbox_owner3_set=0;
+	
 	// nav drawer title
 	private CharSequence mDrawerTitle;
 
@@ -130,6 +138,7 @@ public class MainActivity extends Activity {
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
 			// display view for selected nav drawer item
+			
 			displayView(position);
 		}
 	}
@@ -208,7 +217,7 @@ public class MainActivity extends Activity {
 			FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, fragment).commit();
-
+			
 			// update selected item and title, then close the drawer
 			mDrawerList.setItemChecked(position, true);
 			mDrawerList.setSelection(position);
@@ -244,5 +253,264 @@ public class MainActivity extends Activity {
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
+	
+	private SeekBar PRICEbar; 
+    private TextView SeekValue;
+    private TextView PRICEtextProgress,DISTANCEtextProgress, RATINGtextProgress;
+    
+    public void AndroidSeekBar(SeekBar id1, TextView textid,int type){
+    /** Called when the activity is first created. */
+       	
+        PRICEbar = id1; // make seekbar object
+        SeekValue = textid;                   
 
+        int progress = PRICEbar.getProgress();
+        
+        PRICEbar.setTag(String.valueOf(type));
+
+        
+        PRICEbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){ 
+
+        	   @Override 
+        	   public void onProgressChanged(SeekBar seekBar, int progress, 
+        	     boolean fromUser) { 
+      		   
+        		   int type=Integer.parseInt(seekBar.getTag().toString());
+
+        	        if(type== 1){
+        	     //   	 ((MainActivity)getActivity()).max_budget = progress;
+        	        //     ((MainActivity)getActivity()).min_budget = min_budget_sbar.getProgress();
+        	        	if(progress < min_budget + 5){
+          		       		progress = min_budget + 5;
+          		       		seekBar.setProgress(progress);
+        	        	}
+        	        	max_budget = progress;
+        	        	if(progress>98){
+        	        		SeekValue.setText("No Limit");
+        	        	}
+        	        	else{
+        	           	float value = (float)(progress*2/10);
+        	           	if((progress*2)%10 >= 5){
+        	           		value+=0.5;
+        	           	}
+        	           	 SeekValue.setText("Rs. "+ String.valueOf(value) + " L");
+        	        	}	
+        	        }
+        	        
+        	        else if(type==2){
+        	        	car_age = progress;
+        	        	if(progress >= 90){
+        	        		SeekValue.setText("No Limit");
+        	        	}
+        	        	else{
+        	        		int value = progress/6;
+        	        		SeekValue.setText(String.valueOf(value)+ " Years");
+        	        	}
+        	        }
+        	        else if(type==3){
+        	        	mileage = progress;
+        	        	if(progress>95)
+        	        	{
+        	        		SeekValue.setText("99999 km");
+        	        	}
+        	        	else{
+        	        		int value = ((progress/5)*5)*1000;
+        	        		SeekValue.setText(String.valueOf(value)+ " km");
+        	        	}
+        	        }
+		       		
+        	   } 
+        	   		
+        	   @Override 
+        	   public void onStartTrackingTouch(SeekBar seekBar) { 
+        	    // TODO Auto-generated method stub 
+        	   } 
+
+        	   @Override 
+        	   public void onStopTrackingTouch(SeekBar seekBar) { 
+        	    // TODO Auto-generated method stub 
+        	   } 
+        	       });
+        }
+    private SeekBar PRICEbar1;
+    private TextView SeekValue1;
+    public void AndroidSeekBar1(SeekBar id1, TextView textid,int type){
+    /** Called when the activity is first created. */
+       	
+        PRICEbar1 = id1; // make seekbar object
+        SeekValue1 = textid;                   
+
+        int progress = PRICEbar1.getProgress();
+        
+        PRICEbar1.setTag(String.valueOf(type));
+
+        
+        PRICEbar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){ 
+
+        	   @Override 
+        	   public void onProgressChanged(SeekBar seekBar, int progress, 
+        	     boolean fromUser) { 
+      		       	
+      		       	if(progress > max_budget- 5){
+      		       		progress = max_budget- 5;
+      		       	seekBar.setProgress(progress);
+      		       	}
+      		       	min_budget = progress;
+        	        	if(progress>98){
+        	        		SeekValue1.setText("No Limit");
+        	        	}
+        	        	else{
+        	           	float value = (float)(progress*2/10);
+        	           	if((progress*2)%10 >= 5){
+        	           		value+=0.5;
+        	           	}
+        	           	 SeekValue1.setText("Rs. "+ String.valueOf(value) + " L");
+        	        	}		
+        	   } 
+        	   		
+        	   @Override 
+        	   public void onStartTrackingTouch(SeekBar seekBar) { 
+        	    // TODO Auto-generated method stub 
+        	   } 
+
+        	   @Override 
+        	   public void onStopTrackingTouch(SeekBar seekBar) { 
+        	    // TODO Auto-generated method stub 
+        	   } 
+        	       });
+        }
+    public void onCheckboxClicked(CheckBox cBox, int filter, int type) {
+        // Is the view now checked?
+        boolean checked = cBox.isChecked();        
+        cBox.setTag(String.valueOf(type));
+        if(filter==1)
+        {
+            cBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    			
+    			@Override
+    			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    				// TODO Auto-generated method stub
+    				int type=Integer.parseInt(buttonView.getTag().toString());
+    		        if(type == 1)
+    		        {
+    		        	if (isChecked)
+    		            	cbox_petrol_set = 1;
+    		            else
+    		            	cbox_petrol_set = 0;
+    		        }
+    		        else if(type==2)
+    		        {
+    		            if (isChecked)
+    		            	cbox_diesel_set = 1;	
+    		            else
+    		            	cbox_diesel_set = 0;
+    		        }
+    		        else if (type==3)
+    		        {
+    		        	if(isChecked)
+    		        		cbox_lpg_set = 1;
+    		        	else
+    		        		cbox_lpg_set = 0;
+    		        }
+
+    			}
+    		});
+
+        }
+        else if(filter==2)
+        {
+            cBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    			
+    			@Override
+    			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    				// TODO Auto-generated method stub
+    				int type=Integer.parseInt(buttonView.getTag().toString());
+    		        if(type == 1)
+    		        {
+    		        	if (isChecked)
+    		            	cbox_hback_set = 1;
+    		            else
+    		            	cbox_hback_set = 0;
+    		        }
+    		        else if(type==2)
+    		        {
+    		            if (isChecked)
+    		            	cbox_sedan_set = 1;	
+    		            else
+    		            	cbox_sedan_set = 0;
+    		        }
+    		        else if (type==3)
+    		        {
+    		        	if(isChecked)
+    		        		cbox_suv_set = 1;
+    		        	else
+    		        		cbox_suv_set = 0;
+    		        }
+
+    			}
+    		});
+
+        }
+        else if(filter==3)
+        {
+            cBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    			
+    			@Override
+    			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    				// TODO Auto-generated method stub
+    				int type=Integer.parseInt(buttonView.getTag().toString());
+    		        if(type == 1)
+    		        {
+    		        	if (isChecked)
+    		            	cbox_auto_set = 1;
+    		            else
+    		            	cbox_auto_set = 0;
+    		        }
+    		        else if(type==2)
+    		        {
+    		            if (isChecked)
+    		            	cbox_manual_set = 1;	
+    		            else
+    		            	cbox_manual_set = 0;
+    		        }
+    			}
+    		});
+
+        }
+        else if(filter==4)
+        {
+            cBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+    			
+    			@Override
+    			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    				// TODO Auto-generated method stub
+    				int type=Integer.parseInt(buttonView.getTag().toString());
+    		        if(type == 1)
+    		        {
+    		        	if (isChecked)
+    		            	cbox_owner1_set = 1;
+    		            else
+    		            	cbox_owner1_set = 0;
+    		        }
+    		        else if(type==2)
+    		        {
+    		            if (isChecked)
+    		            	cbox_owner2_set = 1;	
+    		            else
+    		            	cbox_owner2_set = 0;
+    		        }
+    		        else if (type==3)
+    		        {
+    		        	if(isChecked)
+    		        		cbox_owner3_set = 1;
+    		        	else
+    		        		cbox_owner3_set = 0;
+    		        }
+
+    			}
+    		});
+
+        }
+       
+    }
 }
